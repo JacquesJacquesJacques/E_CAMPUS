@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,26 +10,39 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   		<link rel="stylesheet" href="style.css" />
 	</head>
-		
+
 
 
 
 	<body>
 
-		/* contient l'entête d'alouette et le menu déroulant */
+		<!-- contient l'entête d'alouette et le menu déroulant -->
 		<header>
-			/* menu deroulant */ 
+			<button class="menubutton"> MENU </button>
+			<h1> CAMPUS ISAE-SUPAERO </h1>
+			<!-- menu deroulant -->
+			<form method="post" action="search.php">
+					<label for="searchbar"> Rechercher </label>
+					<input type="search" name="search" id="searchbar"/>
+
+			</form>
 			<nav>
+				Salut c'est moi le menu !
 			</nav>
 		</header>
 
-		/* on y affichera la carte et les infos */
+		<!-- on y affichera la carte et les infos -->
 		<section>
 		</section>
 
-		/* liens renvoyant vers les sites de l'isae */
+		<!-- liens renvoyant vers les sites de l'isae -->
 		<footer>
+			<h1> Liens externes </h1>
+			<ul>
+				<li> <a href="https://icampus.isae-supaero.fr/"> Icampus </a> </li>
+				<li> <a href="https://www.isae-supaero.fr/fr/"> Site de l'ISAE-SUPAERO </a> </li>
+			</ul>
 		</footer>
-	
+
 	</body>
 </html>
