@@ -1,0 +1,89 @@
+
+p + ol
+{
+	text-align: justify;
+	color: #FFFFFF;
+	background-color: rgba(78, 219, 36, 0.5);
+	font-size: 1em;
+}
+
+h1
+{
+	text-align: center;
+	font-size: 6em;
+	color: WhiteSmoke;
+	font-family: Verdana, Impact;
+	padding: 0.01em 0px 10px 0px
+	
+}
+
+h2
+{
+	text-align: center;
+	font-size: 1.2em;
+}
+
+h6
+{
+	text-align: center;
+	font-size: 1.1em;
+}
+
+p
+{
+	text-align: justify;
+}
+
+
+body
+{
+	background-color: DarkSlateGrey;
+	opacity: 1;
+} 
+
+
+.flottant
+{
+	float: center;
+}
+
+.contact
+{
+	text-align: center;
+}
+
+
+
+img 
+{
+	padding: 0px 0px 0px 0px;
+	margin: 30px 0px 0px 0px;
+}
+
+
+.container
+{
+	background: url("images/logo.svg") no-repeat center;
+	color: DarkSlateGrey;
+}
+
+.form-control 
+{
+	margin: 0px 10px 0px 10px;
+}
+
+.btn-group
+{
+	background: url("images/logo.svg") fixed no-repeat center;
+	opacity: 0.7;
+	color: #AAFFAA;
+}
+
+.btn
+{
+	margin-left: 40px;
+	margin-right: 14px;
+	margin-top: 50px;
+}
+
+
