@@ -1,0 +1,44 @@
+header
+{
+    display:flex;
+    justify-content:space-around;
+}
+
+header h1
+{
+        /* margin: auto; */
+    text-align:center;
+}
+
+.menubutton
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+form
+{
+    border: 1px solid black;
+}
+
+input
+{
+    margin:auto;
+    border:1px solid black;
+}
+
+nav
+{
+    display: none;
+}
+
+nav:active
+{
+    display: block;
+}
+
+footer
+{
+    background-color: #BBB;
+}
