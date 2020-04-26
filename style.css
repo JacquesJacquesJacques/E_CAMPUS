@@ -7,7 +7,7 @@ p + ol
 	font-size: 1em;
 }
 
-h1
+/*h1
 {
 	text-align: center;
 	font-size: 6em;
@@ -15,7 +15,7 @@ h1
 	font-family: Verdana, Impact;
 	padding: 0.01em 0px 10px 0px
 	
-}
+}*/
 
 h2
 {
@@ -29,10 +29,10 @@ h6
 	font-size: 1.1em;
 }
 
-p
+/*p
 {
 	text-align: justify;
-}
+}*/
 
 
 body
