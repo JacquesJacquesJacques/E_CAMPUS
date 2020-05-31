@@ -5,37 +5,72 @@
   		<meta charset="utf-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   		<link rel="stylesheet" href="style.css" />
 	</head>
 
 
-
-
 	<body>
-
-		<!-- contient l'entête d'alouette et le menu déroulant -->
 		<header>
-			<button class="menubutton"> MENU </button>
-			<h1> CAMPUS ISAE-SUPAERO </h1>
-			<!-- menu deroulant -->
-			<form method="post" action="search.php">
-					<label for="searchbar"> Rechercher </label>
-					<input type="search" name="search" id="searchbar"/>
-
-			</form>
+			<div>
+				<button type="button" id="menu-btn" onclick="drop('#menu')">
+					<svg class="bi bi-list" width="100%" height="100%" viewBox="0 0 16 16" fill="var(--electric-blue)" xmlns="http://www.w3.org/2000/svg">
+  						<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+				</button>
+				<div>
+					<img src="img/logo détouré.png" height="100%" width="100%" class="rounded" alt="logo">
+				</div>
+			</div>
 			<nav>
-				Salut c'est moi le menu !
+				<ul id="menu">
+					<li id="search-li">
+						<form id="search-menu" onsubmit="search($('.search-bar').val());return false">
+							<input class="search-bar" type="search" placeholder="Rechercher" aria-label="Search">
+							<button id="clear-search" type="reset" onclick="search('')">
+								<svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 17" fill="white" xmlns="http://www.w3.org/2000/svg">
+  									<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+  									<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+								</svg>
+							</button>
+							<button id="submit-search" type="submit">
+								<svg class="bi bi-search" width="100%" height="100%" viewBox="0 0 16 16.5" fill="var(--electric-blue)" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+									<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+								</svg>
+							</button>
+						</form>
+					</li>
+					<li><button class="item">HOME</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.batens')">Bâtiment enseignement</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.ci')">Centre Informatique</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.depart')">Départements</button>
+						<ul class="sub-menu depart">
+							<li>DAEP</li>
+							<li>DEOS</li>
+							<li>DISC</li>
+							<li>DMSM</li>
+							<li>DREM</li>
+						</ul>
+					</li>
+					<li><button class="item" onclick="drop('.sub-menu.ru')">Restauration</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.sport')">Installations sportives</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.mde')">Maison des élèves</button></li>
+					<li><button class="item" onclick="drop('.sub-menu.clubs')">Clubs</button>
+						<ul class="sub-menu clubs">
+							<li>AE</li>
+							<li>AS</li>
+							<li>AA</li>
+						</ul>
+					</li>
+					<li><button class="item" href="horscampus.html">Hors-Campus</button></li>
+				</ul>
 			</nav>
 		</header>
 
-		<!-- on y affichera la carte et les infos -->
 		<section>
+			<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg"></object>
 		</section>
 
-		<!-- liens renvoyant vers les sites de l'isae -->
 		<footer>
 			<h1> Liens externes </h1>
 			<ul>
@@ -43,6 +78,9 @@
 				<li> <a href="https://www.isae-supaero.fr/fr/"> Site de l'ISAE-SUPAERO </a> </li>
 			</ul>
 		</footer>
-
+		<script src="scripts/menu_script.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	</body>
 </html>
