@@ -18,7 +18,7 @@
 					</svg>
 				</button>
 				<div>
-					<img src="img/logo détouré.png" height="100%" width="100%" class="rounded" alt="logo">
+					<img src="img/logo contour.png" height="100%" width="100%" class="rounded" alt="logo">
 				</div>
 			</div>
 			<nav>
@@ -54,6 +54,13 @@
 					</li>
 					<li><button class="item" onclick="drop('.sub-menu.ru')">Restauration</button></li>
 					<li><button class="item" onclick="drop('.sub-menu.sport')">Installations sportives</button></li>
+						<ul class="sub-menu sport">
+							<li onclick="gotomap('TENNIS_1_')">Courts de tennis</li>
+							<li onclick="hide('#menu')">Gymnase</li>
+							<li onclick="hide('#menu')">Terrain de basket extérieur</li>
+							<li onclick="hide('#menu')">Terrain de rugby</li>
+
+						</ul>
 					<li><button class="item" onclick="drop('.sub-menu.mde')">Maison des élèves</button></li>
 					<li><button class="item" onclick="drop('.sub-menu.clubs')">Clubs</button>
 						<ul class="sub-menu clubs">
@@ -68,7 +75,7 @@
 		</header>
 
 		<section>
-			<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg"></object>
+			<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg" type="image/svg+xml"></object>
 		</section>
 
 		<footer>
@@ -79,6 +86,7 @@
 			</ul>
 		</footer>
 		<script src="scripts/menu_script.js"></script>
+		<script src="scripts/map_script.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
