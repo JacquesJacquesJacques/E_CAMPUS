@@ -3,7 +3,7 @@
 	<head>
 		<title>Plan du campus</title>
   		<meta charset="utf-8">
-  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1000, user-scalable=1">
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   		<link rel="stylesheet" href="style.css" />
 	</head>
@@ -13,7 +13,7 @@
 		<header>
 			<div>
 				<button type="button" id="menu-btn" onclick="drop('#menu')">
-					<svg class="bi bi-list" width="100%" height="100%" viewBox="0 0 16 16" fill="var(--electric-blue)" xmlns="http://www.w3.org/2000/svg">
+					<svg class="bi bi-list" width="100%" height="100%" viewBox="0 0 16 15" fill="var(--electric-blue)" xmlns="http://www.w3.org/2000/svg">
   						<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 					</svg>
 				</button>
@@ -26,12 +26,12 @@
 					<li id="search-li">
 						<form id="search-menu" onsubmit="search($('.search-bar').val());return false">
 							<input class="search-bar" type="search" placeholder="Rechercher" aria-label="Search">
-							<button id="clear-search" type="reset" onclick="search('')">
+							<!-- <button id="clear-search" type="reset" onclick="search('')">
 								<svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 17" fill="white" xmlns="http://www.w3.org/2000/svg">
   									<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
   									<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
 								</svg>
-							</button>
+							</button> -->
 							<button id="submit-search" type="submit">
 								<svg class="bi bi-search" width="100%" height="100%" viewBox="0 0 16 16.5" fill="var(--electric-blue)" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -55,10 +55,14 @@
 					<li><button class="item" onclick="drop('.sub-menu.ru')">Restauration</button></li>
 					<li><button class="item" onclick="drop('.sub-menu.sport')">Installations sportives</button></li>
 						<ul class="sub-menu sport">
-							<li onclick="gotomap('TENNIS_1_')">Courts de tennis</li>
-							<li onclick="hide('#menu')">Gymnase</li>
-							<li onclick="hide('#menu')">Terrain de basket extérieur</li>
-							<li onclick="hide('#menu')">Terrain de rugby</li>
+							<li id="Tennis" onclick="gotomap('#Tennis')">Courts de tennis</li>
+							<li id="Gymnase" onclick="gotomap('#Gymnase')">Gymnase</li>
+							<li id="Petit gymnase" onclick="gotomap('#Petit gymnase')">Petit gymnase</li>
+							<li id="Piscine" onclick="gotomap('#Piscine')">Piscine</li>
+							<li id="Squash" onclick="gotomap('#Squash')">Squash</li>
+							<li id="Basket" onclick="gotomap('#Basket')">Terrain de basket extérieur</li>
+							<li id="Rugby" onclick="gotomap('#Rugby')">Terrain de rugby</li>
+							<li id="Volley" onclick="gotomap('#Volley')">Volley</li>
 
 						</ul>
 					<li><button class="item" onclick="drop('.sub-menu.mde')">Maison des élèves</button></li>
@@ -74,21 +78,33 @@
 			</nav>
 		</header>
 
-		<section>
-			<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg" type="image/svg+xml"></object>
-		</section>
+		<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg"></object>
 
 		<footer>
-			<h1> Liens externes </h1>
-			<ul>
-				<li> <a href="https://icampus.isae-supaero.fr/"> Icampus </a> </li>
-				<li> <a href="https://www.isae-supaero.fr/fr/"> Site de l'ISAE-SUPAERO </a> </li>
-			</ul>
+			<div id="name" onclick="hide_n_show('#info')">
+				<h2> ISAE-SUPAERO </h2>
+				<svg class="bi bi-caret-up-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  					<path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+				</svg>
+			</div>
+			<div id="info">
+				Liens
+				<ul>
+					<li> <a href="https://icampus.isae-supaero.fr/"> Icampus </a> </li>
+					<li> <a href="https://www.isae-supaero.fr/fr/"> Site de l'ISAE-SUPAERO </a> </li>
+				</ul>
+			</div>
 		</footer>
-		<script src="scripts/menu_script.js"></script>
-		<script src="scripts/map_script.js"></script>
+		<!-- <script src="https://hammerjs.github.io/dist/hammer.js"></script> -->
+		<!-- <script src="https://unpkg.com/pinch-zoom-js@2.3.4/dist/pinch-zoom.min.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="compiled/jquery.svg.pan.zoom.js"></script> -->
+		<csript src="scripts/panzoom/panzoom.js"></script>
+		<script src="scripts/map_script.js"></script>
+		<script src="scripts/menu_script.js"></script>
+
 	</body>
 </html>

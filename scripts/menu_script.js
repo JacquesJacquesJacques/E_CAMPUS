@@ -3,6 +3,8 @@ function hide (elem) {
 };
 
 function drop (elem) {
+    hide("#info");
+    rotate("footer>#name>svg","0");
     if ($(elem).css('display')=='none') {
         hide(".sub-menu");
         $(elem).css('display','block');
@@ -50,6 +52,7 @@ function search (keyword) {
 };
 
 document.addEventListener("click", function(evt) {
+    console.log(evt);
     var targetElement = evt.target;
     do {
         if (targetElement == document.getElementById('menu-btn') || targetElement == document.getElementById('menu')) {
@@ -60,15 +63,19 @@ document.addEventListener("click", function(evt) {
     hide("#menu");
 });
 
-var map = document.getElementById("map");
-
-function mouse_wheel_handler (e){
-    console.log(e);
-    var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    map.style.width=Math.min(100,map.width/document.width+delta)+"%";
-    return false;
+function rotate (elem,deg) {
+    $(elem).css('transform','rotate('+deg+'deg)');
+    $(elem).css('webkitTransform','rotate('+deg+'deg)');
+    $(elem).css('mozTransform','rotate('+deg+'deg)');
+    $(elem).css('oTransform','rotate('+deg+'deg)');
 };
-console.log(document.getElementById("map"));
-document.getElementById("map").addEventListener("click",mouse_wheel_handler,false);
-map.addEventListener("mousewheel",mouse_wheel_handler,false);
-map.addEventListener("DOMMouseScroll",mouse_wheel_handler,false);
+
+function hide_n_show (elem) {
+    if ($(elem).css('display')=='none') {
+        $(elem).css('display','block');
+        rotate('footer>#name>svg','180');
+    } else {
+        $(elem).css('display','none');
+        rotate('footer>#name>svg','0');
+    }
+};

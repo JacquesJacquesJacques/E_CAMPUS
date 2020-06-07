@@ -1,28 +1,43 @@
-var map = document.getElementById("map");
+const map = document.getElementById("map");
+const svgDoc = map.contentDocument;
+const svg = svgDoc.getElementsByTagName("svg")[0];
+console.log(svg);
 
-function mouse_wheel_handler (e){
-    console.log(e);
-    var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    map.style.width=Math.min(100,map.width/document.width+delta)+"%";
-    return false;
+// var manager = new Hammer.Manager(svg);
+// var pinch = new Hammer.Tap();
+//
+// manager.add([pinch]);
+// manager.on("tap", function (e) {
+//     console.log(e);
+//     // svg.viewBox.
+// });
+// const Panzoom = require("./panzoom/panzoom.js");
+// const panzoom = Panzoom (svg);
+
+function highlight (elem, color) {
+    svgDoc.getElementById(elem).getElementsByClassName("st21")[0].style.fill='#FF0';
 };
-console.log(document.getElementById("map"));
-document.getElementById("map").addEventListener("click",mouse_wheel_handler,false);
-map.addEventListener("mousewheel",mouse_wheel_handler,false);
-map.addEventListener("DOMMouseScroll",mouse_wheel_handler,false);
+
+// // export {highlight};
+//
+// var map = document.getElementById("map");
+//
+// function mouse_wheel_handler (e){
+//     console.log(e);
+//     var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+//     map.style.width=Math.min(100,map.width/document.width+delta)+"%";
+//     return false;
+// };
+//
+// map.addEventListener("mousewheel",mouse_wheel_handler,false);
+// map.addEventListener("DOMMouseScroll",mouse_wheel_handler,false);
 
 function gotomap (elem){
     hide('#menu');
-    var svg = map.contentDocument;
-    var children = svg.getElementById(elem).children;
-    console.log(children[12]);
-    children[12].style.fill="#FF0";
-    // for (c of children){
-    //     children[c].style.fill='yellow';
-    // }
+    highlight (elem,"#FF0");
+    $("#place").css('display','block');
 };
 
-function open (elem){
-    $("#menu").css('display','block');
-    console.log(elem);
+function fooo (){
+    console.log("fooooo");
 };
