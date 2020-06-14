@@ -1,12 +1,25 @@
 function hide (elem) {
     $(elem).css('display','none');
+    if (elem=="#menu"){
+        hide(".menu");
+    }
 };
 
 function drop (elem) {
     hide("#info");
     rotate("footer>#name>svg","0");
     if ($(elem).css('display')=='none') {
-        hide(".sub-menu");
+        if (elem!="#menu") {
+            var a = elem.split('.');
+            console.log(a);
+            var s = "";
+            for (var i=1; i<a.length-1; i++){
+                s=s+"."+a[i];
+            }
+            console.log(s);
+            console.log($(".menu.sub.sub2"));
+            hide(s);
+        }
         $(elem).css('display','block');
         $(elem+" li").css('display','block');
     } else {

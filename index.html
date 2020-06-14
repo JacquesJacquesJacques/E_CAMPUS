@@ -40,11 +40,11 @@
 							</button>
 						</form>
 					</li>
-					<li><button class="item">HOME</button></li>
-					<li><button class="item" onclick="drop('.sub-menu.batens')">Bâtiment enseignement</button></li>
-					<li><button class="item" onclick="drop('.sub-menu.ci')">Centre Informatique</button></li>
-					<li><button class="item" onclick="drop('.sub-menu.depart')">Départements</button>
-						<ul class="sub-menu depart">
+					<li><button class="item" onclick="gohome()" style="color:red">HOME</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.batens')">Bâtiment enseignement</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.ci')">Centre Informatique</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.depart')">Départements</button>
+						<ul class="menu sub depart">
 							<li>DAEP</li>
 							<li>DEOS</li>
 							<li>DISC</li>
@@ -52,25 +52,72 @@
 							<li>DREM</li>
 						</ul>
 					</li>
-					<li><button class="item" onclick="drop('.sub-menu.ru')">Restauration</button></li>
-					<li><button class="item" onclick="drop('.sub-menu.sport')">Installations sportives</button></li>
-						<ul class="sub-menu sport">
-							<li id="Tennis" onclick="gotomap('#Tennis')">Courts de tennis</li>
-							<li id="Gymnase" onclick="gotomap('#Gymnase')">Gymnase</li>
-							<li id="Petit gymnase" onclick="gotomap('#Petit gymnase')">Petit gymnase</li>
-							<li id="Piscine" onclick="gotomap('#Piscine')">Piscine</li>
-							<li id="Squash" onclick="gotomap('#Squash')">Squash</li>
-							<li id="Basket" onclick="gotomap('#Basket')">Terrain de basket extérieur</li>
-							<li id="Rugby" onclick="gotomap('#Rugby')">Terrain de rugby</li>
-							<li id="Volley" onclick="gotomap('#Volley')">Volley</li>
+					<li><button class="item" onclick="drop('.menu.sub.ru')">Restauration</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.sport')">Installations sportives</button></li>
+						<ul class="menu sub sport">
+							<li id="Tennis" onclick="gotomap('Tennis')">Courts de tennis</li>
+							<li id="Gymnase" onclick="gotomap('Gymnase')">Gymnase</li>
+							<li id="Petit gymnase" onclick="gotomap('Petit gymnase')">Petit gymnase</li>
+							<li id="Piscine" onclick="gotomap('Piscine')">Piscine</li>
+							<li id="Squash" onclick="gotomap('Squash')">Squash</li>
+							<li id="Basket" onclick="gotomap('Basket-2')">Terrain de basket extérieur</li>
+							<li id="Foot" onclick="gotomap('Foot','Terrain de rugby!!!')">Terrain de rugby</li>
+							<li id="Volley" onclick="gotomap('Volley')">Volley</li>
 
 						</ul>
-					<li><button class="item" onclick="drop('.sub-menu.mde')">Maison des élèves</button></li>
-					<li><button class="item" onclick="drop('.sub-menu.clubs')">Clubs</button>
-						<ul class="sub-menu clubs">
-							<li>AE</li>
-							<li>AS</li>
-							<li>AA</li>
+					<li><button class="item" onclick="drop('.menu.sub.mde')">Maison des élèves</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.clubs')">Clubs</button>
+						<ul class="menu sub clubs">
+							<li onclick="drop('.menu.sub.sub2.AE')">Association des élèves - AE</li>
+								<ul class="menu sub sub2 AE">
+									<li>Robotique</li>
+									<li>CubeSat</li>
+								</ul>
+							<li onclick="drop('.menu.sub.sub2.AS')">Association des sports - AS</li>
+								<ul class="menu sub sub2 AS">
+									<li>Arts martiaux</li>
+									<li>Athlétisme</li>
+									<li>Aviron</li>
+									<li>Badminton</li>
+									<li>Basket</li>
+									<li>Canyoning</li>
+									<li>Cyclisme</li>
+									<li>Danse</li>
+									<li>Escalade</li>
+									<li>Escrime</li>
+									<li>Equitation</li>
+									<li>Football</li>
+									<li>Golf</li>
+									<li>Gymnastique</li>
+									<li>Handball</li>
+									<li>Kite-surf</li>
+									<li>Montagne</li>
+									<li>Musculation et Fitness</li>
+									<li>Natation</li>
+									<li>Parachutisme</li>
+									<li>Parapente</li>
+									<li>Planche à voile</li>
+									<li>Planeur</li>
+									<li>Plongée</li>
+									<li>Pompom</li>
+									<li>Roller Hockey</li>
+									<li>Rugby</li>
+									<li>Ski</li>
+									<li>Surf</li>
+									<li>Tennis</li>
+									<li>Tennis de table</li>
+									<li>ULM</li>
+									<li>Ultimate</li>
+									<li>Voile</li>
+									<li>Volley</li>
+									<li>Water-Polo</li>
+									<li>Yoga</li>
+								</ul>
+							<li onclick="drop('.menu.sub.sub2.AA')">Association des arts - AA</li>
+								<ul class="menu sub sub2 AA">
+									<li>Hiboom</li>
+									<li>Musak</li>
+								</ul>
 						</ul>
 					</li>
 					<li><button class="item" href="horscampus.html">Hors-Campus</button></li>
@@ -78,7 +125,7 @@
 			</nav>
 		</header>
 
-		<object id="map" onclick="hide('#menu')" data="img/PLANCOLORE.svg"></object>
+		<object id="map" onclick="hide('#menu')" data="img/Plan.svg"></object>
 
 		<footer>
 			<div id="name" onclick="hide_n_show('#info')">
