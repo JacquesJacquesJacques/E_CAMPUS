@@ -46,14 +46,20 @@ function dehighlight (elem) {
 // map.addEventListener("DOMMouseScroll",mouse_wheel_handler,false);
 
 function gotomap (id,info){
+    var map = document.getElementById("map").contentDocument;
     hide('#menu');
-    elem=document.getElementById("map").contentDocument.getElementById(id);
-    dehighlight (document.getElementById("map").contentDocument.getElementById("Highlight"));
+    elem=map.getElementById(id);
+    console.log(elem);
+    dehighlight (map.getElementById("Highlight"));
     highlight (elem);
-    $("#name>h2").html(elem);
+    $("#name>h2").html(id);
     $("#info").html(info);
-    $("#info").css('display','block');
-    rotate('footer>#name>svg','180');
+    if (info != '') {
+        $("#info").css('display','block');
+        rotate('footer>#name>svg','180');
+    }
+    var d =  (parseFloat(document.getElementsByTagName('footer')[0].offsetHeight)+8).toString();
+    $('#zoom-btn').css('bottom',d);
 };
 
 function gohome () {
@@ -63,4 +69,19 @@ function gohome () {
     $("#info").html("Liens <ul> <li> <a href='https://icampus.isae-supaero.fr/'> Icampus </a> </li> <li> <a href='https://www.isae-supaero.fr/fr/'> Site de l'ISAE-SUPAERO </a> </li> </ul>");
     $("#info").css('display','none');
     rotate('footer>#name>svg','0');
+    var d = (parseFloat(document.getElementsByTagName('footer')[0].offsetHeight)+8).toString();
+    $('#zoom-btn').css('bottom',d);
+};
+
+function choose_floor (floor){
+    var map = document.getElementById("map").contentDocument;
+    map.getElementById('1er_étage').style.display='none';
+    map.getElementById('rdc').style.display='none';
+    map.getElementById(floor).style.display='inline';
+};
+
+function zoom_map (ratio){
+    var map = document.getElementById("map");
+    map.style.width=(parseFloat(map.style.width.slice(0,-1))*ratio).toString()+"%";
+    map.style.height=(parseFloat(map.style.height.slice(0,-1))*ratio).toString()+"%";
 };

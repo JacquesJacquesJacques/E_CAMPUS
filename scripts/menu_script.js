@@ -11,13 +11,10 @@ function drop (elem) {
     if ($(elem).css('display')=='none') {
         if (elem!="#menu") {
             var a = elem.split('.');
-            console.log(a);
             var s = "";
             for (var i=1; i<a.length-1; i++){
                 s=s+"."+a[i];
             }
-            console.log(s);
-            console.log($(".menu.sub.sub2"));
             hide(s);
         }
         $(elem).css('display','block');
@@ -65,7 +62,6 @@ function search (keyword) {
 };
 
 document.addEventListener("click", function(evt) {
-    console.log(evt);
     var targetElement = evt.target;
     do {
         if (targetElement == document.getElementById('menu-btn') || targetElement == document.getElementById('menu')) {
@@ -91,4 +87,9 @@ function hide_n_show (elem) {
         $(elem).css('display','none');
         rotate('footer>#name>svg','0');
     }
+    var d =  (parseFloat(document.getElementsByTagName('footer')[0].offsetHeight)+8).toString();
+    console.log(d);
+
+    $('#zoom-btn').css('bottom',d+'px');
+    console.log($('#zoom-btn').css('bottom'));
 };

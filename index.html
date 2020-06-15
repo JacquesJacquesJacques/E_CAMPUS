@@ -3,7 +3,7 @@
 	<head>
 		<title>Plan du campus</title>
   		<meta charset="utf-8">
-  		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1000, user-scalable=1">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1000, user-scalable=0">
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   		<link rel="stylesheet" href="style.css" />
 	</head>
@@ -21,6 +21,18 @@
 					<img src="img/logo contour.png" height="100%" width="100%" class="rounded" alt="logo">
 				</div>
 			</div>
+
+			<form id="floor_choice">
+				<div>
+					<label for="1er étage">1er étage</label>
+					<input type="radio" id="1er étage" name="étage" value="1er étage" onclick="choose_floor('1er_étage')">
+				</div>
+				<div>
+					<label for="RDC">RDC</label>
+					<input type="radio" id="RDC" name="étage" value="RDC" checked onclick="choose_floor('rdc')">
+				</div>
+			</form>
+
 			<nav>
 				<ul id="menu">
 					<li id="search-li">
@@ -41,7 +53,20 @@
 						</form>
 					</li>
 					<li><button class="item" onclick="gohome()" style="color:red">HOME</button></li>
-					<li><button class="item" onclick="drop('.menu.sub.batens')">Bâtiment enseignement</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.utilitaires')">Utilitaires</button>
+						<ul class="menu sub utilitaires">
+							<li onclick="gotomap('IMPRIMANTES')">Imprimantes</li>
+							<li onclick="gotomap('MACHINES A CAFE')">Machines à café</li>
+							<li onclick="gotomap('POUBELLES')">Poubelles</li>
+						</ul>
+					</li>
+					<li><button class="item" onclick="drop('.menu.sub.batens')">Bâtiment enseignement</button>
+						<ul class="menu sub batens">
+							<li onclick="gotomap('Petit gymnase')">Bibliothèque</li>
+							<li onclick="gotomap('Tennis')">Bureaux</li>
+							<li onclick="gotomap('Gymnase')">Salles</li>
+						</ul>
+					</li>
 					<li><button class="item" onclick="drop('.menu.sub.ci')">Centre Informatique</button></li>
 					<li><button class="item" onclick="drop('.menu.sub.depart')">Départements</button>
 						<ul class="menu sub depart">
@@ -52,20 +77,23 @@
 							<li>DREM</li>
 						</ul>
 					</li>
-					<li><button class="item" onclick="drop('.menu.sub.ru')">Restauration</button></li>
-					<li><button class="item" onclick="drop('.menu.sub.sport')">Installations sportives</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.sport')">Installations sportives</button>
 						<ul class="menu sub sport">
 							<li id="Tennis" onclick="gotomap('Tennis')">Courts de tennis</li>
 							<li id="Gymnase" onclick="gotomap('Gymnase')">Gymnase</li>
 							<li id="Petit gymnase" onclick="gotomap('Petit gymnase')">Petit gymnase</li>
 							<li id="Piscine" onclick="gotomap('Piscine')">Piscine</li>
 							<li id="Squash" onclick="gotomap('Squash')">Squash</li>
-							<li id="Basket" onclick="gotomap('Basket-2')">Terrain de basket extérieur</li>
-							<li id="Foot" onclick="gotomap('Foot','Terrain de rugby!!!')">Terrain de rugby</li>
-							<li id="Volley" onclick="gotomap('Volley')">Volley</li>
-
+							<li id="Basket" onclick="gotomap('Basket','')">Terrain de basket extérieur</li>
+							<li id="Terrain pelousé" onclick="gotomap('Terrain pelousé','')">Terrain pelousé</li>
+							<li id="Volley" onclick="gotomap('Volley','')">Volley</li>
 						</ul>
-					<li><button class="item" onclick="drop('.menu.sub.mde')">Maison des élèves</button></li>
+					</li>
+					<li><button class="item" onclick="drop('.menu.sub.mde')">Maison des élèves</button>
+						<ul class="menu sub mde">
+							<li onclick="gotomap('Foyer')">Foyer</li>
+						</ul>
+					</li>
 					<li><button class="item" onclick="drop('.menu.sub.clubs')">Clubs</button>
 						<ul class="menu sub clubs">
 							<li onclick="drop('.menu.sub.sub2.AE')">Association des élèves - AE</li>
@@ -120,14 +148,35 @@
 								</ul>
 						</ul>
 					</li>
-					<li><button class="item" href="horscampus.html">Hors-Campus</button></li>
+					<li><button class="item" onclick="drop('.menu.sub.restauration')">Restauration</button>
+						<ul class="menu sub restauration">
+							<li onclick="gotomap('Restaurant')">Restaurant</li>
+							<li onclick="gotomap('Cafétéria')">Cafétéria</li>
+							<li onclick="gotomap('Machines à café')">Machines à café</li>
+							<li onclick="gotomap('Distributeurs')">Distributeurs de nourriture</li>
+						</ul>
+					</li>
+					<li><button class="item" href="horscampus.html">Hors-Campus</button>
+						<ul class="menu sub horscampus">
+							<li onclick="gotomap('Arrêts de bus')">Arrêts de bus</li>
+							<li onclick="gotomap('Arrêts de métro')">Arrêts de métro</li>
+							<li onclick="gotomap('Supermarchés')">Supermarchés</li>
+							<li onclick="gotomap('Vélos Toulouse')">Vélos Toulouse</li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		</header>
 
-		<object id="map" onclick="hide('#menu')" data="img/Plan.svg"></object>
+		<section>
+			<object id="map" onclick="hide('#menu')" style="width:100%;height:100%;" data="img/Plan.svg"></object>
+		</section>
 
 		<footer>
+			<div id="zoom-btn">
+				<button id="zoom-in" onclick="zoom_map(1.2)">+</button>
+				<button id="zoom-out" onclick="zoom_map(1/1.2)">-</button>
+			</div>
 			<div id="name" onclick="hide_n_show('#info')">
 				<h2> ISAE-SUPAERO </h2>
 				<svg class="bi bi-caret-up-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -145,13 +194,17 @@
 		<!-- <script src="https://hammerjs.github.io/dist/hammer.js"></script> -->
 		<!-- <script src="https://unpkg.com/pinch-zoom-js@2.3.4/dist/pinch-zoom.min.js"></script> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
 		<!-- <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 		<script src="compiled/jquery.svg.pan.zoom.js"></script> -->
-		<csript src="scripts/panzoom/panzoom.js"></script>
+		<!-- <script src="scripts/panzoom.js"></script> -->
 		<script src="scripts/map_script.js"></script>
 		<script src="scripts/menu_script.js"></script>
-
+		<!-- <script type="text/javascript">
+			var map = document.getElementById("map");
+			// .contentDocument.getElementsByTagName("svg")[0];
+			panzoom(map);
+		</script> -->
 	</body>
 </html>
