@@ -44,8 +44,6 @@ function place_click (id) {
     highlight(elem);
     var name = parent.document.getElementById("name");
     name.getElementsByTagName("h2")[0].innerHTML=id;
-    parent.document.getElementById("info").style.dsplay='block';
-    rotate(name.getElementsByTagName("svg")[0],'180');
 };
 
 // console.log($("#"+"Tennis-2"+" *"));

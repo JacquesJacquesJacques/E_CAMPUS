@@ -79,6 +79,14 @@ function rotate (elem,deg) {
     $(elem).css('oTransform','rotate('+deg+'deg)');
 };
 
+function adapt (){
+    var d=document.getElementsByTagName('footer')[0].offsetHeight+8;
+    $('#zoom-btn').css('bottom',d+"px");
+    const section = document.getElementsByTagName('section')[0];
+    var dd=d+8-27;
+    $('section').css('bottom',dd+"px");
+};
+
 function hide_n_show (elem) {
     if ($(elem).css('display')=='none') {
         $(elem).css('display','block');
@@ -87,9 +95,5 @@ function hide_n_show (elem) {
         $(elem).css('display','none');
         rotate('footer>#name>svg','0');
     }
-    var d =  (parseFloat(document.getElementsByTagName('footer')[0].offsetHeight)+8).toString();
-    console.log(d);
-
-    $('#zoom-btn').css('bottom',d+'px');
-    console.log($('#zoom-btn').css('bottom'));
+    adapt();
 };
